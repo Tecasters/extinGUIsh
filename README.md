@@ -3,7 +3,7 @@
 Wildfire simulator in Rust. Sort of similar rules to Conway's game of life. Currently, the first phase of the project is underway.
 
 ### First phase
--  determening the simulation parameters (no DEM at this point)
+-  determining the simulation parameters (no DEM at this point)
 -  coding the bare-minimum logic
 -  CLI
 
