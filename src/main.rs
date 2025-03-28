@@ -1,4 +1,5 @@
 use std::{collections::HashMap};
+use extinGUIsh::show_output;
 
 fn main() {
     const N: usize = 5; // number of rows in grid
@@ -17,16 +18,18 @@ fn main() {
     println!("{:?}", w_idx);
 
     // fire is represented by a true cell, tree by a false cell, ground by a None cell
-    let mut state: [[Option<bool>;M];N] = [[Some(false), Some(false), None, None, None, None],
-            [None, Some(true), None, None, None, None], [None, None, None, None, None, None],
-            [None, None, None, None, None, None], [None, None, None, None, Some(true), None]];
+    let mut state: Vec<Option<bool>> = Vec::from([Some(false), Some(false), None, None, None, None,
+            None, Some(true), None, None, None, None, None, None, None, None, None, None,
+            None, None, None, None, None, None, None, None, None, None, Some(true), None]);
     
     // probability reduction due to moisture. Really only checked for cell where there are trees
-    let moisture: [[f32;M];N] = [[0.2, 0.1, 0.3, 0.2, 0.1, 0.0],
-    [0.2, 0.1, 0.3, 0.2, 0.1, 0.0],[0.2, 0.1, 0.3, 0.2, 0.1, 0.0],[0.2, 0.1, 0.3, 0.2, 0.1, 0.0],
-    [0.2, 0.1, 0.3, 0.2, 0.1, 0.0]];
+    let moisture: Vec<f32> = Vec::from([0.2, 0.1, 0.3, 0.2, 0.1, 0.0,
+    0.2, 0.1, 0.3, 0.2, 0.1, 0.0,0.2, 0.1, 0.3, 0.2, 0.1, 0.0,0.2, 0.1, 0.3, 0.2, 0.1, 0.0,
+    0.2, 0.1, 0.3, 0.2, 0.1, 0.0]);
 
     // indices of only those cells where there is currently a fire
     let fire_indices: Vec<[usize;2]> = Vec::from([[1,1], [4,4]]);
+
+    show_output(state, N, M)
 
 }
